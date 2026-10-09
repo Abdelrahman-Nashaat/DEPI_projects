@@ -1,0 +1,7 @@
+pandas
+python-dotenv
+langchain-core
+langgraph
+langchain-ollama
+langchain-groq
+fpdf2

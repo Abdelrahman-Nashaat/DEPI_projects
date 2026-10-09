@@ -22,11 +22,11 @@ def search_products(
 ) -> list[dict]:
     """Search store products by keyword. Optionally filter by max price,
     minimum rating and category. Returns up to 5 products, best rated first."""
-    sql = (
-        "SELECT id, name, category, price, stock, rating "
-        "FROM products WHERE name LIKE ?"
-    )
-    params: list = [f"%{query}%"]
+    sql = "SELECT id, name, category, price, stock, rating FROM products WHERE 1=1"
+    params: list = []
+    for word in query.split():  
+        sql += " AND name LIKE ?"
+        params.append(f"%{word}%")
 
     if max_price is not None:
         sql += " AND price <= ?"
